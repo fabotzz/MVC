@@ -1,19 +1,19 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CRUDMVC.Models
+namespace CrudSimples.Models
 {
     public class Produto
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "O nome do produto é obrigatório.")]
+        [Required(ErrorMessage = "Nome é obrigatório")]
         public string Nome { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "O preço é obrigatório.")]
-        [Range(0.01, 10000, ErrorMessage = "O preço deve ser maior que zero.")]
+        [Required(ErrorMessage = "Preço é obrigatório")]
+        [Range(0.01, 10000, ErrorMessage = "Preço deve ser entre 0,01 e 10.000")]
         public decimal Preco { get; set; }
 
         public string Descricao { get; set; } = string.Empty;
-        public DateTime DataCriacao { get; set; } = DateTime.Now;
+        public DateTime DataCadastro { get; set; } = DateTime.Now;
     }
 }

@@ -1,0 +1,44 @@
+﻿@model List<CrudSimples.Models.Produto>
+
+    @{
+    ViewData["Title"] = "Produtos";
+    }
+
+    <h1>Produtos</h1>
+
+    @if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Novo Produto</a>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Data Cadastro</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nome</td>
+                <td>R$ @item.Preco.ToString("N2")</td>
+                <td>@item.DataCadastro.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
